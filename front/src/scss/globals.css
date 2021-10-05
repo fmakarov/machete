@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&family=Open+Sans&family=Roboto&display=swap');
+
+body {
+  font-family: 'Open Sans';
+  color: #222;
+}
+
+header, footer {
+  font-family: 'Montserrat';
+}
+
+header .fac {
+  background-color: #fac700;
+}
+
+.slider {
+  min-height: calc(50vh);
+}
+
+/* section button {
+  background-color: #ec7821;
+}
+
+section button:hover {
+  background-color: #f39a56;
+} */

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cats",
+  "info": {
+    "name": "Cat",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "goods": {
+      "via": "cat",
+      "collection": "good"
+    }
+  }
+}

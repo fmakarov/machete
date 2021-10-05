@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "goods",
+  "info": {
+    "name": "good",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "features": {
+      "type": "boolean"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "cat": {
+      "via": "goods",
+      "model": "cat"
+    }
+  }
+}
