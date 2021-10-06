@@ -17,7 +17,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Nav = ({ categories, brands }) => {
+const Nav = ({ cats }) => {
   const imgUrl = process.env.GATSBY_STRAPI_URL;
   const { cart } = useContext(CartContext);
 
@@ -72,10 +72,10 @@ const Nav = ({ categories, brands }) => {
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 translate-y-1"
                   >
-                    <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-5xl sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
+                    <Popover.Panel className="absolute subnav z-10 -ml-4 mt-3 transform px-2 w-screen max-w-5xl sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
                       <div className="shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                        <div className="relative grid grid-cols-3 gap-4 bg-gray-100 p-4 sm:gap-4 items-center sm:p-8 text-main">
-                          {categories.map((route) => {
+                        <div className="relative grid grid-cols-3 gap-4 bg-yellow-300 p-4 sm:gap-4 items-center sm:p-8 text-main text-sm">
+                          {cats.map((route) => {
                             return (
                               <a
                                 key={route.node.strapiId}
@@ -83,7 +83,7 @@ const Nav = ({ categories, brands }) => {
                                 className="-m-3 p-2 flex hover:underline"
                               >
                                 <div className="ml-4">
-                                  <p>{route.node.name}</p>
+                                  <p>{route.node.title}</p>
                                 </div>
                               </a>
                             );

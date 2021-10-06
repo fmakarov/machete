@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&family=Open+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Open+Sans&family=Raleway:wght@400;600&display=swap');
 
 body {
   font-family: 'Open Sans';
@@ -11,6 +11,10 @@ body {
 
 header, footer {
   font-family: 'Montserrat';
+}
+
+header .subnav {
+  font-family: 'Raleway';
 }
 
 header .fac {

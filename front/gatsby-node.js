@@ -3,49 +3,26 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      products: allStrapiProduct {
+      goods: allStrapiGood {
         edges {
           node {
             art
-            price
+            name
             slug
-            title
-            description
             strapiId
-            variants {
-              id
-              len
+            types {
+              size
+              material
+              color
+              price
               qty
-              steel
               images {
                 url
               }
             }
-            image {
-              url
-            }
-            category {
-              name
+            cat {
+              title
               slug
-            }
-          }
-        }
-      }
-      categories: allStrapiCategory {
-        edges {
-          node {
-            slug
-            strapiId
-            name
-            filterOptions {
-              len {
-                label
-                checked
-              }
-              steel {
-                label
-                checked
-              }
             }
           }
         }
@@ -65,38 +42,23 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const products = result.data.products.edges;
-  const categories = result.data.categories.edges;
+  const goods = result.data.goods.edges;
   const cats = result.data.cats.edges;
 
-  products.forEach((product) => {
+  goods.forEach((good) => {
     createPage({
-      path: `/cat/${product.node.category.slug}/${encodeURIComponent(
-        product.node.slug
+      path: `/cat/${good.node.cat.slug}/${encodeURIComponent(
+        good.node.slug
       )}`,
       component: require.resolve("./src/templates/ProductDetail.js"),
       context: {
-        name: product.node.title,
-        price: product.node.price,
-        slug: product.node.slug,
-        category: product.node.category,
-        description: product.node.description,
-        variants: product.node.variants,
-        art: product.node.art,
-        id: product.node.strapiId,
-        product: product,
-      },
-    });
-  });
-
-  categories.forEach((category) => {
-    createPage({
-      path: `/cat/${category.node.slug}`,
-      component: require.resolve("./src/templates/ProductList.js"),
-      context: {
-        name: category.node.name,
-        id: category.node.strapiId,
-        filterOptions: category.node.filterOptions,
+        name: good.node.name,
+        slug: good.node.slug,
+        category: good.node.category,
+        types: good.node.types,
+        art: good.node.art,
+        id: good.node.strapiId,
+        good: good,
       },
     });
   });

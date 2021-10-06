@@ -1,7 +1,7 @@
 export const alphabetic = (data, direction) => (
   data.sort((a, b) => {
-    const first = a.node.title.toLowerCase();
-    const second = b.node.title.toLowerCase();
+    const first = a.node.name.toLowerCase();
+    const second = b.node.name.toLowerCase();
 
     const x = direction === "asc" ? first : second;
     const y = direction === "asc" ? second : first;
@@ -30,8 +30,8 @@ export const time = (data, direction) => (
 
 export const price = (data, direction) => (
   data.sort((a, b) => {
-    const first = a.node.price;
-    const second = b.node.price;
+    const first = a.node.types.price;
+    const second = b.node.types.price;
 
     const x = direction === "asc" ? second : first;
     const y = direction === "asc" ? first : second;

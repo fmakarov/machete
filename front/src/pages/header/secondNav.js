@@ -3,7 +3,7 @@ import React from "react";
 
 export default function SecondNav({ cats }) {
   return (
-    <div className="flex items-center text-sm space-x-5 font-header font-semibold">
+    <div className="flex items-center text-sm space-x-5 font-roboto font-medium">
       {cats.map((route) => {
         return (
           <Link

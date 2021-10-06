@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
-
 import ReactPaginate from "react-paginate";
+
 import DynamicToolbar from "../components/product-list/DynamicToolbars";
 import FunctionContainer from "../components/product-list/FunctionContainer";
 import ListOfProducts from "../components/product-list/ListOfProducts";
@@ -11,9 +11,10 @@ import { alphabetic, price } from "../components/product-list/SortFunctions";
 export default function ProductList({
   pageContext: { filterOptions: options, name },
   data: {
-    allStrapiProduct: { edges: products },
+    allStrapiGood: { edges: goods },
   },
 }) {
+  console.log(goods, options)
   const [page, setPage] = useState(1);
   const [filterOptions, setFilterOptions] = useState(options);
   const [sortOptions, setSortOptions] = useState([
@@ -46,11 +47,11 @@ export default function ProductList({
 
   let content = [];
   const selectedSort = sortOptions.filter((option) => option.active)[0];
-  const sortedProducts = selectedSort.function(products);
+  const sortedProducts = selectedSort.function(goods);
 
-  sortedProducts.map((product, i) => {
-    return product.node.variants.map((variant) =>
-      content.push({ product: i, variant })
+  sortedProducts.map((good, i) => {
+    return good.node.types.map((type) =>
+      content.push({ good: i, type })
     );
   });
 
@@ -74,15 +75,15 @@ export default function ProductList({
           }
 
           content.forEach((item) => {
-            if (option === "len") {
+            if (option === "size") {
               if (
-                item.variant.len === value.label &&
+                item.type.size === value.label &&
                 !filteredProducts.includes(item)
               ) {
                 filteredProducts.push(item);
               }
             } else if (
-              item.variant[option.toLocaleLowerCase()] === value.label &&
+              item.type[option.toLocaleLowerCase()] === value.label &&
               !filteredProducts.includes(item)
             ) {
               filteredProducts.push(item);
@@ -95,13 +96,12 @@ export default function ProductList({
   Object.keys(filters).forEach((filter) => {
     filteredProducts = filteredProducts.filter((item) => {
       let valid;
-
       filters[filter].some((value) => {
-        if (filter === "len") {
-          if (item.variant.len === value.label) {
+        if (filter === "size") {
+          if (item.type.size === value.label) {
             valid = item;
           }
-        } else if (item.variant[filter.toLocaleLowerCase()] === value.label) {
+        } else if (item.type[filter.toLocaleLowerCase()] === value.label) {
           valid = item;
         }
       });
@@ -142,7 +142,7 @@ export default function ProductList({
               filterOptions={filterOptions}
               page={page}
               productsPerPage={productsPerPage}
-              products={products}
+              goods={goods}
               content={content}
             />
             <div className="flex flex-row py-5">
@@ -166,30 +166,28 @@ export default function ProductList({
 }
 
 export const query = graphql`
-  query GetCtegoryProducts($id: String) {
-    allStrapiProduct(filter: { category: { id: { eq: $id } } }) {
+  query GetCategoryGoods($id: String) {
+    allStrapiGood(filter: { cat: { id: { eq: $id } } }) {
       edges {
         node {
-          variants {
+          types {
+            color
             id
-            len
-            steel
+            material
+            price
+            qty
+            size
             images {
               url
             }
           }
           art
-          price
           slug
-          status
-          title
+          name
           strapiId
-          image {
-            url
-          }
-          category {
-            name
+          cat {
             slug
+            title
           }
         }
       }

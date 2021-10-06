@@ -5,10 +5,11 @@ module.exports = {
     extend: {
       colors: {
         main: "#222",
-        orange: "#ec7821"
+        orange: "#ec7821",
       },
       fontFamily: {
         header: "Montserrat",
+        roboto: "Raleway",
       },
     },
   },
