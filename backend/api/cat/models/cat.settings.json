@@ -22,6 +22,9 @@
     "goods": {
       "via": "cat",
       "collection": "good"
+    },
+    "filterOptions": {
+      "type": "json"
     }
   }
 }

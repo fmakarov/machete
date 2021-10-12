@@ -5,45 +5,45 @@ import ProductFrame from "./ProductFrameGrid";
 import { GET_DETAILS } from "../../apollo/queries";
 
 export default function ListOfProducts({
-  products,
+  goods,
   page,
   productsPerPage,
   content,
 }) {
-  const FrameHelper = ({ Frame, product, variant }) => {
+  const FrameHelper = ({ Frame, good, type }) => {
     const [stock, setStock] = useState(null);
 
     const { loading, error, data } = useQuery(GET_DETAILS, {
-      variables: { id: product.node.strapiId },
+      variables: { id: good.node.strapiId },
     });
 
     useEffect(() => {
       if (error) {
         setStock(-1);
       } else if (data) {
-        setStock(data.product.variants);
+        setStock(data.good.types);
       }
     }, [error, data]);
 
-    return <Frame variant={variant} product={product} stock={stock} />;
+    return <Frame type={type} good={good} stock={stock} />;
   };
 
   return (
-    <div>
-      <div className="grid grid-cols-4 gap-5">
+    <>
+      <div className="grid md:grid-cols-4 md:gap-5 px-4 md:px-0">
         {content
           .slice((page - 1) * productsPerPage, page * productsPerPage)
           .map((item) => {
             return (
               <FrameHelper
                 Frame={ProductFrame}
-                key={item.variant.id}
-                variant={item.variant}
-                product={products[item.product]}
+                key={item.type.id}
+                type={item.type}
+                good={goods[item.good]}
               />
             );
           })}
       </div>
-    </div>
+    </>
   );
 }

@@ -1,31 +1,11 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./header/header";
+import Footer from "./header/footer";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query GetCategories {
-      allStrapiBrand {
-        edges {
-          node {
-            brand
-            images {
-              name
-              url
-            }
-            strapiId
-          }
-        }
-      }
-      allStrapiCategory {
-        edges {
-          node {
-            name
-            slug
-            strapiId
-          }
-        }
-      }
+    query GetCats {
       allStrapiCat {
         edges {
           node {
@@ -39,12 +19,9 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      <Header
-        categories={data.allStrapiCategory.edges}
-        brands={data.allStrapiBrand.edges}
-        cats={data.allStrapiCat.edges}
-      />
+      <Header cats={data.allStrapiCat.edges} />
       <main>{children}</main>
+      <Footer />
     </div>
   );
 };

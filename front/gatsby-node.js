@@ -3,49 +3,26 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      products: allStrapiProduct {
+      goods: allStrapiGood {
         edges {
           node {
             art
-            price
+            name
             slug
-            title
-            description
             strapiId
-            variants {
-              id
-              len
+            types {
+              size
+              material
+              color
+              price
               qty
-              steel
               images {
                 url
               }
             }
-            image {
-              url
-            }
-            category {
-              name
+            cat {
+              title
               slug
-            }
-          }
-        }
-      }
-      categories: allStrapiCategory {
-        edges {
-          node {
-            slug
-            strapiId
-            name
-            filterOptions {
-              len {
-                label
-                checked
-              }
-              steel {
-                label
-                checked
-              }
             }
           }
         }
@@ -53,8 +30,29 @@ exports.createPages = async ({ graphql, actions }) => {
       cats: allStrapiCat {
         edges {
           node {
+            filterOptions {
+              material {
+                checked
+                label
+              }
+              size {
+                checked
+                label
+              }
+            }
             slug
             title
+            strapiId
+          }
+        }
+      }
+      services: allStrapiService {
+        edges {
+          node {
+            name
+            slug
+            strapiId
+            description
           }
         }
       }
@@ -65,38 +63,34 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const products = result.data.products.edges;
-  const categories = result.data.categories.edges;
+  const goods = result.data.goods.edges;
   const cats = result.data.cats.edges;
+  const services = result.data.services.edges;
 
-  products.forEach((product) => {
+  services.forEach((service) => {
     createPage({
-      path: `/cat/${product.node.category.slug}/${encodeURIComponent(
-        product.node.slug
-      )}`,
-      component: require.resolve("./src/templates/ProductDetail.js"),
+      path: `/services/${encodeURIComponent(service.node.slug)}`,
+      component: require.resolve("./src/templates/ServicePages.js"),
       context: {
-        name: product.node.title,
-        price: product.node.price,
-        slug: product.node.slug,
-        category: product.node.category,
-        description: product.node.description,
-        variants: product.node.variants,
-        art: product.node.art,
-        id: product.node.strapiId,
-        product: product,
+        name: service.node.name,
+        slug: service.node.slug,
+        description: service.node.description,
       },
     });
   });
 
-  categories.forEach((category) => {
+  goods.forEach((good) => {
     createPage({
-      path: `/cat/${category.node.slug}`,
-      component: require.resolve("./src/templates/ProductList.js"),
+      path: `/cat/${good.node.cat.slug}/${encodeURIComponent(good.node.slug)}`,
+      component: require.resolve("./src/templates/ProductDetail.js"),
       context: {
-        name: category.node.name,
-        id: category.node.strapiId,
-        filterOptions: category.node.filterOptions,
+        name: good.node.name,
+        slug: good.node.slug,
+        cat: good.node.cat,
+        types: good.node.types,
+        art: good.node.art,
+        id: good.node.strapiId,
+        good: good,
       },
     });
   });
@@ -107,7 +101,8 @@ exports.createPages = async ({ graphql, actions }) => {
       component: require.resolve("./src/templates/ProductList.js"),
       context: {
         name: cat.node.name,
-        title: cat.node.title
+        id: cat.node.strapiId,
+        filterOptions: cat.node.filterOptions,
       },
     });
   });

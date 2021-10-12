@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "types",
+  "info": {
+    "name": "Type",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "size": {
+      "type": "string"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "color": {
+      "type": "string"
+    },
+    "good": {
+      "via": "types",
+      "model": "good"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "material": {
+      "type": "string"
+    },
+    "qty": {
+      "type": "integer"
+    }
+  }
+}

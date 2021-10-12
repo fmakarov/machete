@@ -8,7 +8,7 @@ import ProductInfo from "../components/product-detail/ProductInfo";
 import { GET_DETAILS } from "../apollo/queries";
 
 export default function ProductDetail({
-  pageContext: { name, category, description, variants, art, price, id },
+  pageContext: { name, cat, types, art, price, id },
 }) {
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -22,7 +22,7 @@ export default function ProductDetail({
     if (error) {
       setStock(-1);
     } else if (data) {
-      setStock(data.product.variants);
+      setStock(data.good.types);
     }
   }, [error, data]);
 
@@ -30,19 +30,17 @@ export default function ProductDetail({
     <Layout>
       <div className="max-w-7xl mx-auto py-16">
         <div className="flex-col">
-          <div className="text-gray-500 text-sm">
+          <div className="text-gray-500 text-sm pb-10">
             Каталог /{" "}
-            <Link
-              to={`/cat/${category.slug}`}
-              className="text-gray-700 underline"
-            >
-              {category.name}
+            <Link to={`/cat/${cat.slug}`} className="text-gray-700 underline">
+              {cat.title}
             </Link>
+            /{" "}{name}
           </div>
           <div className="flex space-x-5 mx-auto">
             <div className="w-1/3 flex-col">
               <ProductImages
-                images={variants[selectedVariant].images}
+                images={types[selectedVariant].images}
                 selectedImage={selectedImage}
                 setSelectedImage={setSelectedImage}
               />
@@ -50,20 +48,20 @@ export default function ProductDetail({
             <div className="w-2/3">
               <ProductInfo
                 name={name}
-                description={description}
                 art={art}
-                price={price}
-                variants={variants}
+                types={types}
                 stock={stock}
-                product={id}
+                good={id}
                 selectedVariant={selectedVariant}
                 setSelectedVariant={setSelectedVariant}
               />
             </div>
           </div>
           <div className="flex-col py-5">
-            <div className="text-3xl font-header font-semibold">Характеристики</div>
-            <div className="py-5 text-gray-600">{description}</div>
+            <div className="text-3xl font-header font-semibold">
+              Характеристики
+            </div>
+            <div className="py-5 text-gray-600">desc</div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import DescriptionContainer from "./DescriptionContainer";
 
 export default function DynamicToolbar({ name, sortOptions, setSortOptions }) {
   return (
-    <div className="flex space-x-5">
+    <div className="md:flex md:space-x-5 hidden">
       <DescriptionContainer
         name={name}
         sortOptions={sortOptions}

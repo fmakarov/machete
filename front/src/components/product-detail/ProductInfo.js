@@ -1,14 +1,16 @@
 import React from "react";
 import QtyButton from "../product-list/QtyButton";
 
-const toCurrency = (n, curr, LanguageFormat = undefined) =>
-  Intl.NumberFormat(LanguageFormat, {
+export const toCurrency = (n) => {
+  const curr = "RUB";
+  const LanguageFormat = "Ru-ru";
+  return Intl.NumberFormat(LanguageFormat, {
     style: "currency",
     currency: curr,
     minimumFractionDigits: 0,
   }).format(n);
-
-export const getStockDisplay = (stock, variant) => {
+};
+export const getStockDisplay = (stock, type) => {
   switch (stock) {
     case undefined:
       break;
@@ -19,7 +21,7 @@ export const getStockDisplay = (stock, variant) => {
     case -1:
       return "Ошибка загрузки данных";
     default:
-      if (stock[variant].qty === 0) {
+      if (stock[type].qty === 0) {
         return (
           <div className="pt-10 text-sm text-yellow-600">Нет в наличии</div>
         );
@@ -31,30 +33,28 @@ export const getStockDisplay = (stock, variant) => {
 
 export default function ProductInfo({
   name,
-  variants,
+  types,
   art,
-  price,
   stock,
   selectedVariant,
 }) {
   const stockDisplay = getStockDisplay(stock, selectedVariant);
-
   return (
     <div className="px-10">
       <div className="flex-col space-y-5">
         <div className="flex text-gray-400 text-sm">Артикул {art}</div>
         <div className="py-5 font-semibold font-header text-xl">{name}</div>
         <div className="text-gray-600">
-          Производитель: {variants[selectedVariant].steel}
+          Производитель: {types[selectedVariant].steel}
         </div>
         <div>{stockDisplay}</div>
         <div className="text-black pb-10 font-semibold font-header text-xl border-b">
-          {toCurrency(price, "RUB", "Ru-ru")}
+          {toCurrency(types[selectedVariant].price)}
         </div>
         <div className="flex justify-around">
           <QtyButton
             selectedVariant={selectedVariant}
-            variants={variants}
+            types={types}
             name={name}
           />
         </div>

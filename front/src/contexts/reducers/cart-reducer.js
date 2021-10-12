@@ -31,9 +31,7 @@ export default function cartReducer(state, action) {
       } else {
         newCart.push(action.payload);
       }
-
       saveData(newCart);
-
       return newCart;
     case REMOVE_FROM_CART:
       const newQty = newCart[existingIndex].qty - action.payload.qty;

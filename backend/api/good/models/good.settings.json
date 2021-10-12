@@ -8,23 +8,13 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
       "required": true
-    },
-    "images": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
     },
     "price": {
       "type": "decimal"
@@ -33,11 +23,19 @@
       "type": "boolean"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name"
     },
     "cat": {
       "via": "goods",
       "model": "cat"
+    },
+    "types": {
+      "via": "good",
+      "collection": "type"
+    },
+    "art": {
+      "type": "string"
     }
   }
 }
