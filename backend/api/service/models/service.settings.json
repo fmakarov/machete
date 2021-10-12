@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "name": "Service",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

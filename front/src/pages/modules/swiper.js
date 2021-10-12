@@ -58,7 +58,6 @@ const Slider = () => {
                 {toCurrency(price, "RUB", "Ru-ru")}
               </div>
               <div className="flex space-x-3 pr-3">
-                <QtyButton />
                 <ShoppingBagIcon className="w-7 text-orange hover:text-gray-900" />
               </div>
             </div>

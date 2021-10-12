@@ -2,19 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Open+Sans&family=Raleway:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Open+Sans&family=Raleway:wght@400;600&display=swap");
 
 body {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   color: #222;
 }
 
-header, footer {
-  font-family: 'Montserrat';
+header,
+footer {
+  font-family: "Montserrat";
 }
 
 header .subnav {
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
 
 header .fac {
@@ -24,11 +25,12 @@ header .fac {
 .slider {
   min-height: calc(50vh);
 }
-
-/* section button {
-  background-color: #ec7821;
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+  border-color: #68d391;
 }
-
-section button:hover {
-  background-color: #f39a56;
-} */
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68d391;
+}

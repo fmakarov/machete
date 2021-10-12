@@ -1,6 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./header/header";
+import Footer from "./header/footer";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -18,10 +19,9 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      <Header
-        cats={data.allStrapiCat.edges}
-      />
+      <Header cats={data.allStrapiCat.edges} />
       <main>{children}</main>
+      <Footer />
     </div>
   );
 };

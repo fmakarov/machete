@@ -30,8 +30,29 @@ exports.createPages = async ({ graphql, actions }) => {
       cats: allStrapiCat {
         edges {
           node {
+            filterOptions {
+              material {
+                checked
+                label
+              }
+              size {
+                checked
+                label
+              }
+            }
             slug
             title
+            strapiId
+          }
+        }
+      }
+      services: allStrapiService {
+        edges {
+          node {
+            name
+            slug
+            strapiId
+            description
           }
         }
       }
@@ -44,17 +65,28 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const goods = result.data.goods.edges;
   const cats = result.data.cats.edges;
+  const services = result.data.services.edges;
+
+  services.forEach((service) => {
+    createPage({
+      path: `/services/${encodeURIComponent(service.node.slug)}`,
+      component: require.resolve("./src/templates/ServicePages.js"),
+      context: {
+        name: service.node.name,
+        slug: service.node.slug,
+        description: service.node.description,
+      },
+    });
+  });
 
   goods.forEach((good) => {
     createPage({
-      path: `/cat/${good.node.cat.slug}/${encodeURIComponent(
-        good.node.slug
-      )}`,
+      path: `/cat/${good.node.cat.slug}/${encodeURIComponent(good.node.slug)}`,
       component: require.resolve("./src/templates/ProductDetail.js"),
       context: {
         name: good.node.name,
         slug: good.node.slug,
-        category: good.node.category,
+        cat: good.node.cat,
         types: good.node.types,
         art: good.node.art,
         id: good.node.strapiId,
@@ -69,7 +101,8 @@ exports.createPages = async ({ graphql, actions }) => {
       component: require.resolve("./src/templates/ProductList.js"),
       context: {
         name: cat.node.name,
-        title: cat.node.title
+        id: cat.node.strapiId,
+        filterOptions: cat.node.filterOptions,
       },
     });
   });

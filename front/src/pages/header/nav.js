@@ -24,14 +24,16 @@ const Nav = ({ cats }) => {
   return (
     <Popover className="relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center md:justify-start md:space-x-10 px-4 md:px-0">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <div className="flex space-x-2 items-center">
               <a href="/">
                 <span className="font-bold">Alif</span>
                 <span className="italic font-semibold">Ko</span>
               </a>
-              <div className="text-xs italic">интернет магазин экспресс-доставки</div>
+              <div className="text-xs italic hidden md:flex">
+                интернет магазин экспресс-доставки
+              </div>
             </div>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -100,34 +102,32 @@ const Nav = ({ cats }) => {
               Новинки
             </a>
             <a
-              href="/discount"
+              href="/services/vozvrat-tovara"
               className="font-semibold text-xs hover:underline"
             >
               Возврат
             </a>
             <a
-              href="/discount"
+              href="/services/dostavka"
               className="font-semibold text-xs hover:underline"
             >
               Доставка
             </a>
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-5">
-            <div className="relative pl-3">
+            <Link to="/cart" className="relative pl-3">
               {cart.length > 0 ? (
-                <div className="absolute right-0 bg-white rounded-full h-4 w-4 ml-5 flex items-center">
+                <div className="absolute -right-2 bg-white rounded-full h-3 w-4 ml-5 flex items-center">
                   <span className="w-full text-center text-orange text-xs font-semibold">
                     {cart.length}
                   </span>
                 </div>
-              ) : (
-                ""
-              )}
-              <ShoppingBagIcon className="w-5 text-black opacity-60 hover:opacity-100" />
-            </div>
-            <ChatAltIcon className="w-5 text-black opacity-60 hover:opacity-100" />
+              ) : null}
+              <ShoppingBagIcon className="w-5 text-main " />
+            </Link>
+            <ChatAltIcon className="w-5 text-main" />
             <Link to="/account">
-              <UserCircleIcon className="w-5 text-black opacity-60 hover:opacity-100" />
+              <UserCircleIcon className="w-5 text-main" />
             </Link>
             <div className="flex space-x-3 items-center font-bold text-sm">
               <PhoneIncomingIcon className="w-5 md:block hidden" />{" "}
@@ -178,10 +178,11 @@ const Nav = ({ cats }) => {
                 <a href="#">Бренды</a>
                 <a href="#">Акции</a>
                 <a href="#">Контакты</a>
+                <a href="/cart">Корзина</a>
               </div>
               <div>
                 <a
-                  href="#"
+                  href="/account"
                   className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700"
                 >
                   Войти

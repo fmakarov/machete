@@ -14,7 +14,6 @@ export default function ProductList({
     allStrapiGood: { edges: goods },
   },
 }) {
-  console.log(goods, options)
   const [page, setPage] = useState(1);
   const [filterOptions, setFilterOptions] = useState(options);
   const [sortOptions, setSortOptions] = useState([
@@ -123,7 +122,7 @@ export default function ProductList({
   return (
     <Layout>
       <div className="mx-auto container">
-        <div className="flex space-x-5 py-10">
+        <div className="md:flex md:space-x-5 flex-col py-10">
           <FunctionContainer
             filterOptions={filterOptions}
             setFilterOptions={setFilterOptions}

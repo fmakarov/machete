@@ -7,6 +7,7 @@ export default function Fields({
   setErrors,
   values,
   setValues,
+  disabled
 }) {
   const error = (field) => {
     if (typeof errors[field] !== "undefined" && errors[field]) {
@@ -26,6 +27,7 @@ export default function Fields({
             <input
               type={fields[field].type}
               value={values[field]}
+              disabled={disabled}
               onChange={(e) => {
                 const valid = validateHelper(e);
                 if (errors[field] || valid[field] === true) {

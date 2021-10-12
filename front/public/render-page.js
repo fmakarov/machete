@@ -13612,19 +13612,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action-types */ "./src/contexts/actions/action-types.js");
 
-const addToCart = (variant, qty, name, stock) => ({
+const addToCart = (type, qty, name, stock) => ({
   type: _action_types__WEBPACK_IMPORTED_MODULE_0__.ADD_TO_CART,
   payload: {
-    variant,
+    type,
     qty,
     name,
     stock
   }
 });
-const removeFromCart = (variant, qty) => ({
+const removeFromCart = (type, qty) => ({
   type: _action_types__WEBPACK_IMPORTED_MODULE_0__.REMOVE_FROM_CART,
   payload: {
-    variant,
+    type,
     qty
   }
 });

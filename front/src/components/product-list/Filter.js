@@ -14,12 +14,12 @@ export default function Filter({ filterOptions, setFilterOptions }) {
           .map((option) => {
             const titles = () => {
               switch (option) {
-                case "len":
-                  return "Длина клинка (мм)";
-                case "steel":
-                  return "Марка стали";
+                case "size":
+                  return "Длина";
+                case "material":
+                  return "Материал";
                 default:
-                  return "sddd";
+                  return "Тип";
               }
             };
             return (
