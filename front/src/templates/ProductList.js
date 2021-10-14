@@ -122,7 +122,7 @@ export default function ProductList({
   return (
     <Layout>
       <div className="mx-auto container">
-        <div className="md:flex md:space-x-5 flex-col py-10">
+        <div className="md:flex md:flex-row md:space-x-5 flex-col py-10">
           <FunctionContainer
             filterOptions={filterOptions}
             setFilterOptions={setFilterOptions}
