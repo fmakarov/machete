@@ -3,7 +3,7 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `Интернет-магазин Алифко`,
-    description: `Интернет магазин`,
+    description: `Интернет магазин экспресс доставки строительных материалов`,
     author: `fedro`,
     keywords: `петрочи`,
     siteUrl: `https://alifko.ru`,
