@@ -15,7 +15,7 @@ export default function Item({ item }) {
     <div className="flex space-x-5">
       <div className="w-20 border">
         <img
-          src={process.env.GATSBY_STRAPI_URL + item.type.images[0].url}
+          src={item.type.images[0].url}
           alt={item.type.id}
         />
       </div>
