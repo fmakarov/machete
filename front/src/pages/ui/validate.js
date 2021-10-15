@@ -27,48 +27,48 @@ export default function validate(values) {
       }
       valid[field] = email(val);
     }
-    if (field === "phone") {
-      const val = values[field];
-      function phone(val) {
-        return /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(val);
-      }
-      valid[field] = phone(val);
-    }
-    if (field === "password") {
-      const val = values[field];
-      function password(val) {
-        return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(val);
-      }
-      valid[field] = password(val);
-    }
-    if (field === "name" || field === "message") {
-      const val = values[field];
-      function password(val) {
-        return val.length > 3;
-      }
-      valid[field] = password(val);
-    }
-    if (field === "zip") {
-      const val = values[field];
-      function password(val) {
-        return /^\d{6}(-\d{6})?$/.test(val);
-      }
-       (valid[field] = password(val));
-    }
-    if (field === "city") {
-      const val = values[field];
-      function password(val) {
-        return val.length >= 0;
-      }
-       (valid[field] = password(val));
-    }
-    if (field === "state" || field === "street") {
-      const val = values[field];
-      function password(val) {
-        return val.length !== 0;
-      }
-       (valid[field] = password(val));
-    }
+    // if (field === "phone") {
+    //   const val = values[field];
+    //   function phone(val) {
+    //     return /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(val);
+    //   }
+    //   valid[field] = phone(val);
+    // }
+    // if (field === "password") {
+    //   const val = values[field];
+    //   function password(val) {
+    //     return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(val);
+    //   }
+    //   valid[field] = password(val);
+    // }
+    // if (field === "name" || field === "message") {
+    //   const val = values[field];
+    //   function password(val) {
+    //     return val.length > 3;
+    //   }
+    //   valid[field] = password(val);
+    // }
+    // if (field === "zip") {
+    //   const val = values[field];
+    //   function password(val) {
+    //     return /^\d{6}(-\d{6})?$/.test(val);
+    //   }
+    //    (valid[field] = password(val));
+    // }
+    // if (field === "city") {
+    //   const val = values[field];
+    //   function password(val) {
+    //     return val.length >= 0;
+    //   }
+    //    (valid[field] = password(val));
+    // }
+    // if (field === "state" || field === "street") {
+    //   const val = values[field];
+    //   function password(val) {
+    //     return val.length !== 0;
+    //   }
+    //    (valid[field] = password(val));
+    // }
   });
 
   // return (valid[field] = validators[field](values[field]));
