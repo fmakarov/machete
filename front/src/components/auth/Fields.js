@@ -1,5 +1,5 @@
 import React from "react";
-import validate from "../../pages/ui/validate";
+import validate from "../ui/validate"
 
 export default function Fields({
   fields,

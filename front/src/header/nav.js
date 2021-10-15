@@ -11,7 +11,7 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { Popover, Transition } from "@headlessui/react";
 import { Link } from "gatsby";
-import { CartContext } from "../../contexts";
+import { CartContext } from "../contexts";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
