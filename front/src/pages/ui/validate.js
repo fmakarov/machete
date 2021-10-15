@@ -24,7 +24,7 @@ export default function validate(values) {
     if (typeof vv === "function") {
       return valid[field] = vv(values[field]);
     } else {
-      return valid;
+      return valid[field];
     }
   });
 
