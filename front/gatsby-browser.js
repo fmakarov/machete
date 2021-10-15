@@ -1,2 +1,2 @@
 import "./src/scss/globals.css"
-export { wrapRootElement } from "./src/pages/ui/root-wrapper"
+export { wrapRootElement } from "./src/components/ui/root-wrapper"

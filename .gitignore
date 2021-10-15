@@ -2,6 +2,7 @@
 /front/.cache
 /front/public/
 /front/public/page-data/
+/front/src/.DS_Store
 /backend/node_modules
 front/node_modules
 backend/node_modules
@@ -9,3 +10,5 @@ node_modules
 
 *.env
 *.json
+
+.DS_Store

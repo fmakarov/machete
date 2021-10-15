@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import validate from "../../pages/ui/validate";
+import validate from "../ui/validate"
 import Confirmation from "../settings/Confiramtion";
 import Details from "../settings/Details";
 import Location from "../settings/Location";
@@ -49,24 +49,24 @@ export default function CheckoutPortal({ user }) {
     { label: "Доставка за пределы", price: 500 },
   ];
 
-  // const errorHelper = (values, forBilling, billingValues, slot) => {
-  //   // const valid = validate(values);
+  const errorHelper = (values, forBilling, billingValues, slot) => {
+    const valid = validate(values);
 
-  //   if (forBilling !== false && forBilling !== undefined) {
-  //     const billingValid = validate(billingValues);
+    if (forBilling !== false && forBilling !== undefined) {
+      const billingValid = validate(billingValues);
 
-  //     if (forBilling === slot) {
-  //       return Object.keys(billingValid).some((value) => !billingValid[value]);
-  //     } else {
-  //       return (
-  //         Object.keys(billingValid).some((value) => !billingValid[value]) ||
-  //         Object.keys(valid).some((value) => !valid[value])
-  //       );
-  //     }
-  //   } else {
-  //     return Object.keys(valid).some((value) => !valid[value]);
-  //   }
-  // };
+      if (forBilling === slot) {
+        return Object.keys(billingValid).some((value) => !billingValid[value]);
+      } else {
+        return (
+          Object.keys(billingValid).some((value) => !billingValid[value]) ||
+          Object.keys(valid).some((value) => !valid[value])
+        );
+      }
+    } else {
+      return Object.keys(valid).some((value) => !valid[value]);
+    }
+  };
 
   let steps = [
     {
@@ -88,12 +88,12 @@ export default function CheckoutPortal({ user }) {
         />
       ),
       hasActions: true,
-      // error: errorHelper(
-      //   detailValues,
-      //   detailForBilling,
-      //   billingDetails,
-      //   detailSlot
-      // ),
+      error: errorHelper(
+        detailValues,
+        detailForBilling,
+        billingDetails,
+        detailSlot
+      ),
     },
     {
       title: "Данные плательщика",
@@ -108,7 +108,7 @@ export default function CheckoutPortal({ user }) {
           noSlots
         />
       ),
-      // errors: errorHelper(billingDetails),
+      errors: errorHelper(billingDetails),
     },
     {
       title: "Адрес",
@@ -130,12 +130,12 @@ export default function CheckoutPortal({ user }) {
         />
       ),
       hasActions: true,
-      // error: errorHelper(
-      //   locationValues,
-      //   locationForBilling,
-      //   billingLocation,
-      //   locationSlot
-      // ),
+      error: errorHelper(
+        locationValues,
+        locationForBilling,
+        billingLocation,
+        locationSlot
+      ),
     },
     {
       title: "Адрес доставки",
@@ -150,7 +150,7 @@ export default function CheckoutPortal({ user }) {
           noSlots
         />
       ),
-      // error: errorHelper(billingLocation),
+      error: errorHelper(billingLocation),
     },
     {
       title: "Доставка",
@@ -162,7 +162,7 @@ export default function CheckoutPortal({ user }) {
           setSelectedShipping={setSelectedShipping}
         />
       ),
-      // error: selectedShipping === null,
+      error: selectedShipping === null,
     },
     {
       title: "Оплата",
@@ -177,7 +177,7 @@ export default function CheckoutPortal({ user }) {
           checkout
         />
       ),
-      // error: false,
+      error: false,
     },
     {
       title: "Подтверждение",
