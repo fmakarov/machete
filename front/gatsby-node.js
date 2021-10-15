@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   services.forEach((service) => {
     createPage({
-      path: `/services/${encodeURIComponent(service.node.slug)}`,
+      path: `/services/${service.node.slug}`,
       component: require.resolve("./src/templates/ServicePages.js"),
       context: {
         name: service.node.name,

@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-product-list-js",
-    "path": "/cat/santehnika",
-    "result": {"data":{"allStrapiGood":{"edges":[{"node":{"types":[{"color":"белый","id":"615c8cd8316b53096cfb5413","material":"Сталь","price":9850,"qty":1,"size":"100","images":[{"url":"https://jamstack-alifko.s3.eu-central-1.amazonaws.com/brand_buck_33c8196096.png"},{"url":"https://jamstack-alifko.s3.eu-central-1.amazonaws.com/CRKT_L_150d60fadb.png"}]}],"art":"682909","slug":"installyacziya-grohe-solido-38971000-bez-klavishi-bez-unitaza","name":"Инсталляция GROHE Solido 38971000 без клавиши без унитаза","strapiId":"615c8a0ca9e04d0923e03549","cat":{"slug":"santehnika","title":"Сантехника"}}}]}},"pageContext":{"id":"615b5e454d2781f710b2b6bd","filterOptions":{"material":[{"checked":false,"label":"8Cr13MoV"},{"checked":false,"label":"154CM"}],"size":[{"checked":false,"label":"8"},{"checked":false,"label":"72"}]}}},
-    "staticQueryHashes": ["3179385126"]}

@@ -1,5 +1,7 @@
 /front/node_modules
 /front/.cache
+/front/public/
+/front/public/page-data/
 /backend/node_modules
 front/node_modules
 backend/node_modules

@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-product-list-js",
-    "path": "/cat/interer-i-otdelka",
-    "result": {"data":{"allStrapiGood":{"edges":[]}},"pageContext":{"id":"615be97e4d2781f710b2b6be","filterOptions":{"material":[{"checked":false,"label":"8Cr13MoV"},{"checked":false,"label":"154CM"}],"size":[{"checked":false,"label":"8"},{"checked":false,"label":"72"}]}}},
-    "staticQueryHashes": ["3179385126"]}
