@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import validate from "../../pages/ui/validate";
+// import validate from "../../pages/ui/validate";
 import Confirmation from "../settings/Confiramtion";
 import Details from "../settings/Details";
 import Location from "../settings/Location";
