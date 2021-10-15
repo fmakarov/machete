@@ -18,6 +18,7 @@ function classNames(...classes) {
 }
 
 const Nav = ({ cats }) => {
+  const imgUrl = process.env.GATSBY_STRAPI_URL;
   const { cart } = useContext(CartContext);
 
   return (

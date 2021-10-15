@@ -9,13 +9,15 @@ const toCurrency = (n, curr, LanguageFormat = undefined) =>
     minimumFractionDigits: 0,
   }).format(n);
 
+const imgUrl = process.env.GATSBY_STRAPI_URL;
+
 export default function ProductFrame({ good, type }) {
   return (
     <div className="flex-col md:shadow hover:shadow-md border bg-gray-50">
       <Link to={`/cat/${good.node.cat.slug}/${good.node.slug}`}>
         <div className="bg-white px-5 items-center">
           <div className="md:flex-col flex self-center justify-center">
-            <img src={`${type.images[0].url}`} className="w-40 md:w-auto" />
+            <img src={`${imgUrl}${type.images[0].url}`} className="w-40 md:w-auto" />
           </div>
           <div className="h-16 text-sm md:text-base">{good.node.name}</div>
         </div>

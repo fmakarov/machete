@@ -9,7 +9,7 @@ export default function ProductImages({
     <>
       <div className="flex">
         <img
-          src={images[selectedImage].url}
+          src={process.env.GATSBY_STRAPI_URL + images[selectedImage].url}
           alt="knife"
         />
       </div>
@@ -19,7 +19,7 @@ export default function ProductImages({
             <div key={image.url} className="border">
               <button type="button" onClick={() => setSelectedImage(i)}>
                 <img
-                  src={image.url}
+                  src={process.env.GATSBY_STRAPI_URL + image.url}
                   alt={`product_small${i}`}
                   className="w-24"
                 />
