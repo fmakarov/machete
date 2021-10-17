@@ -5,10 +5,10 @@ import SEO from "../components/ui/seo"
 
 const IndexPage = () => {
   return (
-      <Layout>
-        <SEO title="Main" />
-        <MainPage />
-      </Layout>
+    <Layout>
+      <SEO title="Главная" />
+      <MainPage />
+    </Layout>
   );
 };
 

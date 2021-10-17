@@ -59,12 +59,12 @@ export default function Details({
   const email_password = EmailPassword(false, false);
   const name_phone = {
     name: {
-      helperText: "you must enter a name",
+      helperText: "Введите имя и фамилию",
       placeholder: "ФИО",
     },
     phone: {
-      helperText: "invalid phone number",
-      placeholder: "Контактный номер",
+      helperText: "Неверный формат! Формат: 8950-123-12-18",
+      placeholder: "Номер: 8950-123-12-18",
     },
   };
 
@@ -80,7 +80,7 @@ export default function Details({
 
   return (
     <div className="flex-col">
-      <div className="py-5 pr-5">
+      <div className="py-5 md:pr-5">
         {fields.map((pair, i) => {
           return (
             <div key={i}>
@@ -103,7 +103,7 @@ export default function Details({
         <div className="flex space-x-5 justify-between items-center">
           <Slots slot={slot} setSlot={setSlot} checkout={checkout} />
           {checkout && (
-            <div>
+            <>
               <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
                 <input
                   id="toggle"
@@ -116,12 +116,12 @@ export default function Details({
                 <label
                   htmlFor="toggle"
                   className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
-                ></label>
+                />
               </div>
               <label htmlFor="toggle" className="text-xs text-gray-700">
-                Оплата
+                Перейти к оплате
               </label>
-            </div>
+            </>
           )}
         </div>
       )}

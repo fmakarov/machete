@@ -21,8 +21,8 @@ export default function Fields({
     };
     return !fields[field].hidden ? (
       <div className="flex-col" key={field}>
-        <div className="flex space-x-5 items-center">
-          <div className="w-20">{fields[field].placeholder}</div>
+        <div className="flex md:space-x-5 items-center">
+          <div className="w-20 md:flex hidden">{fields[field].placeholder}</div>
           <div className="w-full">
             <input
               type={fields[field].type}

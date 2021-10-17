@@ -19,7 +19,7 @@ export default function CheckoutNavigation({
   location,
   setLocation,
   locationSlot,
-  setErrors
+  setErrors,
 }) {
   const { user, dispatchUser } = useContext(UserContext);
   const [showDatas, setShowDatas] = useState({
@@ -59,7 +59,7 @@ export default function CheckoutNavigation({
         }
 
         if (action === "delete") {
-          setErrors({})
+          setErrors({});
           if (isDetails) {
             setDetails({ name: "", email: "", phone: "" });
           } else if (isLocation) {
@@ -81,7 +81,7 @@ export default function CheckoutNavigation({
   };
 
   return (
-    <div className="flex items-center justify-between border-b">
+    <div className="flex items-center justify-between pb-2 border-b">
       {selectedStep === 0 || selectedStep === steps.length - 1 ? null : (
         <button
           type="button"
@@ -93,7 +93,7 @@ export default function CheckoutNavigation({
           <ArrowLeftIcon className="w-6 text-gray-500" />{" "}
         </button>
       )}
-      <div className="text-2xl font-header font-semibold">
+      <div className="md:text-2xl font-header font-semibold">
         {steps[selectedStep].title}
       </div>
       {selectedStep >= steps.length - 2 ? null : (
@@ -103,9 +103,9 @@ export default function CheckoutNavigation({
           onClick={() => {
             setSelectedStep(selectedStep + 1);
           }}
-          className="p-2 hover:bg-gray-50 rounded"
+          className="flex space-x-2 px-2 py-1 hover:bg-gray-50 rounded bg-green-500 md:text-base text-sm text-white"
         >
-          <ArrowRightIcon className="w-6 text-green-400" />
+          <span>Дальше</span> <ArrowRightIcon className="md:w-6 w-4 text-gray-200" />
         </button>
       )}
       {steps[selectedStep].hasActions && user.username !== "Guest" ? (

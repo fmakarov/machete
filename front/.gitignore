@@ -1,0 +1,9 @@
+node_modules/
+public/
+.cache/
+
+
+*.env
+*.json
+
+.DS_Store

@@ -62,8 +62,8 @@ export default function Location({
   }, [billing]);
 
   return (
-    <div className="flex-col space-y-5 pr-5 py-5">
-      <div className="flex space-x-5">
+    <div className="flex-col space-y-5 md:pr-5 py-5">
+      <div className="flex md:flex-row flex-col md:space-x-5">
         <Fields
           fields={fields}
           values={billing === slot && !noSlots ? billingValues : values}
@@ -75,12 +75,12 @@ export default function Location({
           disabled={checkout ? false : !edit}
         />
       </div>
-      <div>{values.city ? `${values.city}` : "Город"}</div>
+      <div>{values.city ? `${values.city}` : "Город: Казань"}</div>
       {noSlots ? null : (
-        <div className="flex space-x-5 justify-between items-center">
+        <div className="flex md:flex-row md:space-x-5 flex-col space-y-4 md:space-y-4 md:justify-between items-center">
           <Slots slot={slot} setSlot={setSlot} checkout={checkout} />
           {checkout && (
-            <>
+            <div className="flex justify-between items-center">
               <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
                 <input
                   type="checkbox"
@@ -93,12 +93,12 @@ export default function Location({
                 <label
                   htmlFor="toggle"
                   className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
-                ></label>
+                />
               </div>
               <label htmlFor="toggle" className="text-xs text-gray-700">
-                Оплата
+                Адрес доставки совпадает с вашим адресом
               </label>
-            </>
+            </div>
           )}
         </div>
       )}

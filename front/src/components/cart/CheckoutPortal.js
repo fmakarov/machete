@@ -45,7 +45,7 @@ export default function CheckoutPortal({ user }) {
 
   const [selectedShipping, setSelectedShipping] = useState(null);
   const shippingOptions = [
-    { label: "Доставка по городу", price: 0 },
+    { label: "Доставка по городу", price: 300 },
     { label: "Доставка за пределы", price: 500 },
   ];
 
@@ -217,7 +217,7 @@ export default function CheckoutPortal({ user }) {
   }, [detailSlot, locationSlot, selectedStep]);
 
   return (
-    <div className="flex-col bg-gray-100 p-5 w-5/12">
+    <div className="flex-col bg-gray-100 md:p-5 p-4 md:w-5/12">
       <CheckoutNavigation
         steps={steps}
         selectedStep={selectedStep}

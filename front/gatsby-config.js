@@ -1,12 +1,13 @@
-require("dotenv").config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `Интернет-магазин Алифко`,
+    title: `Интернет-магазин строительных материалов в Казани. Купить онлайн строительные материалы с доставкой`,
     description: `Интернет магазин экспресс доставки строительных материалов`,
     author: `fedro`,
-    keywords: `петрочи`,
+    keywords: ["строительный магазин"],
     siteUrl: `https://alifko.ru`,
+    defaultImage: ""
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,6 +15,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
+        // apiURL: "http://localhost:1337",
         apiURL: process.env.GATSBY_STRAPI_URL,
         queryLimit: 1000, // Defaults to 100
         collectionTypes: [`cat`, `good`, `type`, `service`],

@@ -18,7 +18,7 @@ export default function Payments({
   return (
     <div className="flex-col space-y-5">
       <div className="py-4">
-        <div>Варианты оплаты</div>
+        <div>Внимание! Временно он-лайн оплата недоступна. Оплата картой или наличными после доставки</div>
       </div>
       <div className="flex items-center justify-between border py-2 px-3 bg-gray-50 hover:bg-gray-100">
         <CreditCardIcon className="w-8" />
@@ -33,7 +33,7 @@ export default function Payments({
           </button>
         )}
       </div>
-      <div className="flex space-x-5 justify-between">
+      <div className="flex md:space-x-5 justify-between">
         <Slots slot={slot} setSlot={setSlot} noLabel />
         {checkout && (
           <div>

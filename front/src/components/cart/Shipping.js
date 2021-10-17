@@ -1,5 +1,4 @@
 import React from "react";
-import { TruckIcon } from "@heroicons/react/outline";
 import { toCurrency } from "../product-detail/ProductInfo";
 
 export default function Shipping({
@@ -10,6 +9,10 @@ export default function Shipping({
   return (
     <div className="flex-col py-4">
       <div className="flex flex-col space-y-2 py-4">
+        <div className="text-gray-400 text-sm">
+          Внимание! Мы работаем над автоматическим расчетом доставки. Наш
+          менеджер с вами свяжется для расчета полной стоимости!
+        </div>
         {shippingOptions.map((option) => {
           return (
             <div key={option.label}>
