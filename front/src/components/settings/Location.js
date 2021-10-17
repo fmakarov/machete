@@ -62,8 +62,8 @@ export default function Location({
   }, [billing]);
 
   return (
-    <div className="flex-col space-y-5 md:pr-5 py-5">
-      <div className="flex md:flex-row flex-col md:space-x-5">
+    <div className="flex-col space-y-5 py-5">
+      <div className="flex flex-col space-y-5">
         <Fields
           fields={fields}
           values={billing === slot && !noSlots ? billingValues : values}
@@ -77,7 +77,7 @@ export default function Location({
       </div>
       <div>{values.city ? `${values.city}` : "Город: Казань"}</div>
       {noSlots ? null : (
-        <div className="flex md:flex-row md:space-x-5 flex-col space-y-4 md:space-y-4 md:justify-between items-center">
+        <div className="flex flex-col space-y-4 md:space-y-4 md:justify-between items-center">
           <Slots slot={slot} setSlot={setSlot} checkout={checkout} />
           {checkout && (
             <div className="flex justify-between items-center">

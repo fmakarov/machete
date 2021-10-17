@@ -103,7 +103,7 @@ export default function CheckoutNavigation({
           onClick={() => {
             setSelectedStep(selectedStep + 1);
           }}
-          className="flex space-x-2 px-2 py-1 hover:bg-gray-50 rounded bg-green-500 md:text-base text-sm text-white"
+          className="flex space-x-2 px-2 py-1 rounded bg-green-500 md:text-base text-sm text-white"
         >
           <span>Дальше</span> <ArrowRightIcon className="md:w-6 w-4 text-gray-200" />
         </button>

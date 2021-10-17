@@ -64,7 +64,7 @@ export default function Details({
     },
     phone: {
       helperText: "Неверный формат! Формат: 8950-123-12-18",
-      placeholder: "Номер: 8950-123-12-18",
+      placeholder: "Контактный номер",
     },
   };
 
@@ -103,7 +103,7 @@ export default function Details({
         <div className="flex space-x-5 justify-between items-center">
           <Slots slot={slot} setSlot={setSlot} checkout={checkout} />
           {checkout && (
-            <>
+            <div className="md:flex md:space-x-2 items-center">
               <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
                 <input
                   id="toggle"
@@ -121,7 +121,7 @@ export default function Details({
               <label htmlFor="toggle" className="text-xs text-gray-700">
                 Перейти к оплате
               </label>
-            </>
+            </div>
           )}
         </div>
       )}

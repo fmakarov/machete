@@ -20,17 +20,18 @@ export default function cartReducer(state, action) {
 
   switch (action.type) {
     case ADD_TO_CART:
-      if (existingIndex !== -1) {
-        let newQty = newCart[existingIndex].qty + action.payload.qty;
+      // if (existingIndex !== -1) {
+      //   let newQty = newCart[existingIndex].qty + action.payload.qty;
 
-        if (newQty > action.payload.stock) {
-          newQty = action.payload.stock;
-        }
+      //   if (newQty > action.payload.stock) {
+      //     newQty = action.payload.stock;
+      //   }
 
-        newCart[existingIndex] = { ...newCart[existingIndex], qty: newQty };
-      } else {
-        newCart.push(action.payload);
-      }
+      //   newCart[existingIndex] = { ...newCart[existingIndex], qty: newQty };
+      // } else {
+      //   newCart.push(action.payload);
+      // }
+      newCart.push(action.payload);
       saveData(newCart);
       return newCart;
     case REMOVE_FROM_CART:

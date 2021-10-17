@@ -5,7 +5,7 @@ import Item from "./Item";
 export default function CartItems() {
   const { cart } = useContext(CartContext);
   return (
-    <div>
+    <div className="flex-col space-y-6">
       {cart.map((item) => {
         return <Item item={item} key={item.type.id} />;
       })}

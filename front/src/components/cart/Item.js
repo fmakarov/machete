@@ -12,7 +12,7 @@ export default function Item({ item }) {
   };
   const actions = [{ icon: <TrashIcon />, onClick: handleDelete }];
   return (
-    <div className="flex flex-row md:space-x-5 items-center px-4 md:px-0">
+    <div className="flex flex-row md:space-x-5 items-center px-4 md:px-0 w-full justify-between">
       <div className="md:w-20 w-1/2 md:border pr-2">
         <img src={item.type.images[0].url} alt={item.type.id} />
       </div>
