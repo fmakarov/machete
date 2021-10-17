@@ -41,28 +41,32 @@ export default function QtyButton({ types, selectedVariant, name, isCart }) {
   }, [success]);
 
   return (
-    <div className="flex space-x-3 items-center">
+    <div className="flex space-x-1 items-center">
       {isCart ? null : (
         <button type="button" onClick={handleCart}>
           {success ? (
-            <CheckIcon className="w-6 text-green-500 transition duration-500 ease-in-out transform" />
+            <div className="py-1 px-2 text-white text-sm mr-1 rounded">
+              <CheckIcon className="w-6 text-green-500 transition duration-500 ease-in-out transform" />
+            </div>
           ) : (
-            <ShoppingBagIcon className="w-6 hover:text-orange" />
+            <div className="py-1 px-2 text-white bg-orange text-sm mr-1 rounded">
+              В корзину
+            </div>
           )}
         </button>
       )}
       <button
         type="button"
         onClick={() => handleChange("down")}
-        className="font-header font-bold text-xl border px-2 hover:bg-gray-200 text-gray-500"
+        className="font-header font-bold border px-1 hover:bg-gray-200 text-gray-500"
       >
         -
       </button>
-      <div className="font-header font-bold text-xl">{qty}</div>
+      <div className="font-header font-bold">{qty}</div>
       <button
         type="button"
         onClick={() => handleChange("up")}
-        className="font-header font-bold text-xl border px-2 hover:bg-gray-200 text-gray-500"
+        className="font-header font-bold border px-1 hover:bg-gray-200 text-gray-500"
       >
         +
       </button>

@@ -173,6 +173,11 @@ export const query = graphql`
             color
             id
             material
+            brand
+            color_palitre
+            material_main
+            product_type
+            size_fraction
             price
             qty
             size

@@ -40,6 +40,24 @@
     },
     "qty": {
       "type": "integer"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "product_type": {
+      "type": "string"
+    },
+    "size_fraction": {
+      "type": "string"
+    },
+    "material_main": {
+      "type": "string"
+    },
+    "color_palitre": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
     }
   }
 }

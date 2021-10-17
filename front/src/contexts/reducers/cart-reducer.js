@@ -9,8 +9,8 @@ export default function cartReducer(state, action) {
   let existingIndex;
 
   if (action.payload) {
-    existingIndex = state.findIndex(
-      (item) => item.variant === action.payload.variant
+    existingIndex = state.findIndex((item) => {
+      return item.type === action.payload.type}
     );
   }
 
@@ -20,25 +20,26 @@ export default function cartReducer(state, action) {
 
   switch (action.type) {
     case ADD_TO_CART:
-      // if (existingIndex !== -1) {
-      //   let newQty = newCart[existingIndex].qty + action.payload.qty;
+      if (existingIndex !== -1) {
+        console.log("2",existingIndex)
+        let newQty = newCart[existingIndex].qty + action.payload.qty;
 
-      //   if (newQty > action.payload.stock) {
-      //     newQty = action.payload.stock;
-      //   }
-
-      //   newCart[existingIndex] = { ...newCart[existingIndex], qty: newQty };
-      // } else {
-      //   newCart.push(action.payload);
-      // }
-      newCart.push(action.payload);
+        if (newQty > action.payload.stock) {
+          newQty = action.payload.stock;
+        }
+        newCart[existingIndex] = { ...newCart[existingIndex], qty: newQty };
+      } else {
+        newCart.push(action.payload);
+      }
+      console.log("existingIndex", existingIndex !== -1, existingIndex);
+      // newCart.push(action.payload);
       saveData(newCart);
       return newCart;
     case REMOVE_FROM_CART:
       const newQty = newCart[existingIndex].qty - action.payload.qty;
       if (newQty <= 0) {
         newCart = newCart.filter(
-          (item) => item.variant !== action.payload.variant
+          (item) => item.type !== action.payload.type
         );
       } else {
         newCart[existingIndex] = { ...newCart[existingIndex], qty: newQty };

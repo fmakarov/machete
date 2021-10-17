@@ -14,10 +14,16 @@ export default function Filter({ filterOptions, setFilterOptions }) {
           .map((option) => {
             const titles = () => {
               switch (option) {
-                case "size":
-                  return "Длина";
-                case "material":
-                  return "Материал";
+                case "brand":
+                  return "Марка";
+                case "color_palitre":
+                  return "Цветовая палитра";
+                case "material_main":
+                  return "Основной материал";
+                case "product_type":
+                  return "Тип продукта";
+                case "size_fraction":
+                  return "Размер фракции (мм)";
                 default:
                   return "Тип";
               }

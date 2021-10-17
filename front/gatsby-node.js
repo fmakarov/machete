@@ -31,13 +31,29 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             filterOptions {
-              material {
-                checked
+              brand {
                 label
+                checked
+              }
+              color_palitre {
+                label
+                checked
+              }
+              material_main {
+                label
+                checked
+              }
+              product_type {
+                label
+                checked
               }
               size {
-                checked
                 label
+                checked
+              }
+              size_fraction {
+                label
+                checked
               }
             }
             slug

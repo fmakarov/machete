@@ -13,11 +13,11 @@ export default function ProductFrame({ good, type }) {
   return (
     <div className="flex-col md:shadow hover:shadow-md border bg-gray-50">
       <Link to={`/cat/${good.node.cat.slug}/${good.node.slug}`}>
-        <div className="bg-white px-5 items-center">
-          <div className="md:flex-col flex self-center justify-center">
-            <img src={`${type.images[0].url}`} className="w-40 md:w-auto" />
+        <div className="md:flex-col flex bg-white px-5 w-full">
+          <div className=" self-center">
+            <img src={`${type.images[0].url}`} className="w-40 md:w-48" />
           </div>
-          <div className="h-16 text-sm md:text-base">{good.node.name}</div>
+          <div className="h-16 text-sm py-4 overflow-hidden">{good.node.name}</div>
         </div>
       </Link>
       <div className="bg-gray-50">
@@ -25,7 +25,7 @@ export default function ProductFrame({ good, type }) {
           <div className="font-header font-bold text-xl p-4">
             {toCurrency(type.price, "RUB", "Ru-ru")}
           </div>
-          <div className="border-l p-5 flex space-x-5">
+          <div className="border-l p-4 flex">
             <QtyButton
               name={good.node.name}
               types={good.node.types}
