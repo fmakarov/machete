@@ -61,7 +61,7 @@ export default function ProductList({
   Object.keys(filterOptions)
     .filter((option) => filterOptions[option] !== null)
     .map((option) => {
-      filterOptions[option].forEach((value) => {
+      return filterOptions[option].forEach((value) => {
         if (value.checked) {
           isFiltered = true;
 
@@ -93,7 +93,7 @@ export default function ProductList({
     });
 
   Object.keys(filters).forEach((filter) => {
-    filteredProducts = filteredProducts.filter((item) => {
+    return filteredProducts = filteredProducts.filter((item) => {
       let valid;
       filters[filter].some((value) => {
         if (filter === "size") {

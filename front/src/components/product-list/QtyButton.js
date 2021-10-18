@@ -1,4 +1,4 @@
-import { CheckIcon, ShoppingBagIcon } from "@heroicons/react/outline";
+import { CheckIcon } from "@heroicons/react/outline";
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../contexts";
 import { addToCart, removeFromCart } from "../../contexts/actions";
@@ -15,13 +15,13 @@ export default function QtyButton({ types, selectedVariant, name, isCart }) {
     if (qty === 1 && direction === "down") {
       return null;
     }
-    const newQty = direction === "up" ? qty + 1 : qty - 1;
+    let newQty = direction === "up" ? qty + 1 : qty - 1;
     setQty(newQty);
 
     if (isCart) {
       if (direction === "up") {
         dispatchCart(addToCart(types[selectedVariant], 1, name));
-      } else if (direction === "up") {
+      } else if (direction === "down") {
         dispatchCart(removeFromCart(types[selectedVariant], 1));
       }
     }

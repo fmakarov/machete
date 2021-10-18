@@ -35,7 +35,7 @@ export default function Item({ item }) {
       </div>
       <div className="flex md:flex-row flex-col md:pl-0 pl-2 text-center items-center">
         <div className="font-semibold font-header md:text-xl">
-          {toCurrency(item.type.price)}
+          {toCurrency(item.type.price * item.qty)}
         </div>
         <div className="md:px-4 py-1">
           {actions.map((action, i) => {

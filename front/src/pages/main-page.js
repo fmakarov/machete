@@ -8,10 +8,10 @@ const MainPage = () => {
   return (
     <div>
       <Slides />
-      <section className="py-16 bg-gray-100">
+      <section className="md:py-16 py-5 px-5 md:px-0">
         <div className="container mx-auto">
-          <h1 className="text-4xl font-bold font-header">Распродажа</h1>
-          <div className="flex flex-row py-10">
+          <h1 className="md:text-4xl text-2xl font-bold font-header pb-4">Рекомендуем</h1>
+          <div className="flex flex-row">
             <Slider />
           </div>
         </div>

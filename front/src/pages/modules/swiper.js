@@ -1,36 +1,9 @@
 import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import { Swiper, SwiperSlide } from "swiper/react";
-import QtyButton from "../../components/product-list/QtyButton"
+import QtyButton from "../../components/product-list/QtyButton";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import "swiper/css";
-
-const slide = [
-  {
-    name: "Смеситель для кухни ROSSINKA Z Z35-35U-Black c гибким изливом черный/хром",
-    img: "//cs.petrovich.ru/image/6995407/original-925x925-fit.jpg",
-    price: "2399",
-  },
-  {
-    name: "Обогреватель масляный КМ 1500 Вт 7 секций с сушилкой",
-    img: "https://cs.petrovich.ru/image/7327402/original-925x925-fit.jpg",
-    price: "1999",
-  },
-  {
-    name: "Гидроизоляция Plitonit ГидроЭласт 14 кг",
-    img: "https://cs.petrovich.ru/images/2995132/original-925x925-fit.jpg",
-    price: "3999",
-  },
-  {
-    name: "Инсталляция GROHE Solido 38971000 без клавиши без унитаза",
-    img: "https://cs.petrovich.ru/image/7576797/original-925x925-fit.jpg",
-    price: "9850",
-  },
-  {
-    name: "Обои компакт-винил на флизелиновой основе Elysium Лира фон Е42102 (1,06х10 м)л",
-    img: "https://cs.petrovich.ru/image/6348875/original-925x925-fit.jpg",
-    price: "1777",
-  },
-];
 
 const toCurrency = (n, curr, LanguageFormat = undefined) =>
   Intl.NumberFormat(LanguageFormat, {
@@ -39,33 +12,96 @@ const toCurrency = (n, curr, LanguageFormat = undefined) =>
     minimumFractionDigits: 0,
   }).format(n);
 
-const Slider = () => {
+export default function Slider() {
+  const data = useStaticQuery(graphql`
+    query SwiperQuery {
+      allStrapiGood {
+        edges {
+          node {
+            art
+            cat {
+              slug
+              title
+            }
+            features
+            name
+            types {
+              color
+              id
+              material
+              price
+              qty
+              size
+              images {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  const goods = data.allStrapiGood.edges;
+  const featured = Object.keys(goods)
+    .filter((option) => goods[option].node.features !== false)
+    .map((it) => goods[it].node);
+
   return (
-    <Swiper spaceBetween={30} slidesPerView={5}>
-      {slide.map(({ name, img, price }) => {
+    <Swiper
+      spaceBetween={10}
+      slidesPerView={5}
+      breakpoints={{
+        320: {
+          slidesPerView: 1
+        },
+        // when window width is >= 480px
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+        // when window width is >= 768px
+        768: {
+          width: 768,
+          slidesPerView: 2,
+        },
+      }}
+    >
+      {featured.map(({ name, types, art }) => {
         return (
-          <SwiperSlide key={name} className="bg-white border rounded shadow-md">
-            <div className="flex flex-col p-5">
-              <div>
-                <img src={img} className="w-full" />
-              </div>
-              <div className="text-center">
-                <h2 className="text-sm">{name}</h2>
-              </div>
-            </div>
-            <div className="border-t flex justify-between">
-              <div className="font-header font-bold text-2xl p-5">
-                {toCurrency(price, "RUB", "Ru-ru")}
-              </div>
-              <div className="flex space-x-3 pr-3">
-                <ShoppingBagIcon className="w-7 text-orange hover:text-gray-900" />
-              </div>
-            </div>
+          <SwiperSlide key={name}>
+            {types.map((element) => {
+              return (
+                <div key={element.id} className="flex flex-col p-4">
+                  <div className="flex self-center">
+                    <img src={element.images[0].url} className="md:h-32 w-full" />
+                  </div>
+                  <div className="py-2 text-sm">
+                    <span className="text-gray-400 text-xs">Арт. {art}</span>
+                    <h2>{name}</h2>
+                  </div>
+                  <div className="border-t flex justify-between">
+                    <div className="font-header font-bold text-2xl py-2">
+                      {toCurrency(element.price, "RUB", "Ru-ru")}
+                    </div>
+                    <div className="flex space-x-3 pr-3">
+                      <QtyButton
+                        name={name}
+                        types={types}
+                        selectedVariant={types.indexOf(types[0])}
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </SwiperSlide>
         );
       })}
     </Swiper>
   );
-};
-
-export default Slider;
+}

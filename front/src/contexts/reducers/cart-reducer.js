@@ -21,7 +21,6 @@ export default function cartReducer(state, action) {
   switch (action.type) {
     case ADD_TO_CART:
       if (existingIndex !== -1) {
-        console.log("2",existingIndex)
         let newQty = newCart[existingIndex].qty + action.payload.qty;
 
         if (newQty > action.payload.stock) {
@@ -31,8 +30,6 @@ export default function cartReducer(state, action) {
       } else {
         newCart.push(action.payload);
       }
-      console.log("existingIndex", existingIndex !== -1, existingIndex);
-      // newCart.push(action.payload);
       saveData(newCart);
       return newCart;
     case REMOVE_FROM_CART:
